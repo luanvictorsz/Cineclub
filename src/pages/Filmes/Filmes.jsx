@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import "./filme-info.css"
 import api from '../../services/api';
 
 function Filmes() {
     const { id } = useParams();
+    const navigate = useNavigate();
+
     const [filme, setFilme] = useState({});
     const [loading, setLoading] = useState(true);
 
@@ -21,11 +23,13 @@ function Filmes() {
                 setLoading(false);
             } catch (error) {
                 console.log("Filme não encontrado", error);
+                navigate("/", { replace: true })
+                return
             }
         }
 
         loadFilme();
-    }, [id]); // Agora 'id' é uma dependência
+    }, [navigate, id]); // Agora 'id' é uma dependência
 
     if (loading) {
         return (
@@ -49,7 +53,7 @@ function Filmes() {
             <div className='area-buttons'>
                 <button>Salvar</button>
                 <button>
-                    <a href='google.com'>Trailer</a>
+                    <a href={`https://youtube.com/results?search_query=${filme.title} Trailer`}>Trailer</a>
                 </button>
             </div>
         </div>
