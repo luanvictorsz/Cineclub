@@ -1,4 +1,4 @@
-import {Routes, Route, BrowserRouter, Router} from 'react-router-dom'
+import {Routes, Route, BrowserRouter} from 'react-router-dom'
 
 //paginas
 import Erro from './pages/Error/Index'

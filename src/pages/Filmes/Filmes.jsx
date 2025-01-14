@@ -13,7 +13,7 @@ function Filmes() {
             try {
                 const response = await api.get(`/movie/${id}`, {
                     params: {
-                        api_key: "c03709d98388e2d196322d97b94b651c", 
+                        api_key: "", 
                         language: "pt-BR",
                     },
                 });
@@ -49,7 +49,7 @@ function Filmes() {
             <div className='area-buttons'>
                 <button>Salvar</button>
                 <button>
-                    <a href=''>Trailer</a>
+                    <a href='google.com'>Trailer</a>
                 </button>
             </div>
         </div>
