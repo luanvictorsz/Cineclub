@@ -29,7 +29,26 @@ function Filmes() {
         }
 
         loadFilme();
-    }, [navigate, id]); // Agora 'id' é uma dependência
+    }, [navigate, id]); 
+
+    function SalvarFilme() {
+        const minhaLista = localStorage.getItem("@cineClube");
+    
+        let filmesSalvos = JSON.parse(minhaLista) || [];
+    
+        const hasFilme = filmesSalvos.some((filmeSalvo) => filmeSalvo.id === filme.id);
+    
+        if (hasFilme) {
+            alert("Filme já existe na lista");
+            return;
+        }
+    
+        filmesSalvos.push(filme);
+    
+        localStorage.setItem("@cineClube", JSON.stringify(filmesSalvos));
+        alert("Filme salvo com sucesso")
+    }
+    
 
     if (loading) {
         return (
@@ -51,7 +70,7 @@ function Filmes() {
             <strong>Avaliação: {filme.vote_average} / 10</strong>
 
             <div className='area-buttons'>
-                <button>Salvar</button>
+                <button onClick={SalvarFilme}>Salvar</button>
                 <button>
                     <a href={`https://youtube.com/results?search_query=${filme.title} Trailer`}>Trailer</a>
                 </button>
