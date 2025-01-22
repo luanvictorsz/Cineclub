@@ -16,7 +16,7 @@ function Filmes() {
             try {
                 const response = await api.get(`/movie/${id}`, {
                     params: {
-                        api_key: "", 
+                        api_key: "c03709d98388e2d196322d97b94b651c", 
                         language: "pt-BR",
                     },
                 });
